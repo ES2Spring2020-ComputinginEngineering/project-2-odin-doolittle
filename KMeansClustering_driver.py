@@ -8,15 +8,13 @@ glucose_scaled, hemoglobin_scaled = Scaled(glucose, hemoglobin)
 count = 0
 Updated_Centroids = np.array(UpdateCentroids(K))
 Assignment_Array = np.array(AssignToCentroid())
-
 while True:
         count += 1
         Assignment_Array = np.array(AssignToCentroid())
         graphingKMeans(glucose_scaled, hemoglobin_scaled, Assignment_Array, Centroids)
-        Centroids = UpdateCentroids(K)
-        if Centroids[0][0] == np.array(UpdateCentroids(K))[0][0]:
+        Centroids = UpdateCentroids(K)       
+        if count >= 3 and Centroids[0][0] == np.array(UpdateCentroids(K))[0][0]:
             break
-        if count == 25:
-            break
+
 
 Calculate_Accuracy(K)
